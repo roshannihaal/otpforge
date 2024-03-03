@@ -11,3 +11,8 @@ services:
       - PORT=${PORT}
     ports:
       - ${PORT}:${PORT}
+  redis:
+    container_name: otpforge-redis
+    restart: always
+    ports:
+      - ${REDIS_EXPOSE_PORT}:6379
