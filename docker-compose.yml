@@ -10,6 +10,9 @@ services:
     environment:
       - PORT=${PORT}
       - REDIS_HOST=${REDIS_HOST}
+      - OTP_LENGTH=${OTP_LENGTH}
+      - INCLUDE_ALPHABETS=${INCLUDE_ALPHABETS}
+      - INCLUDE_NUMBERS=${INCLUDE_NUMBERS}
     ports:
       - ${PORT}:${PORT}
     extra_hosts:
