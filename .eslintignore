@@ -1,0 +1,14 @@
+**/node_modules
+
+**/*.md
+
+**/docker-compose*.yml
+
+**/Dockerfile*
+
+**/Makefile
+
+**/dist
+
+
+

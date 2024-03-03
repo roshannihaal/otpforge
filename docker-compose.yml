@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  api:
+    container_name: otpforge-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      - PORT=${PORT}
+    ports:
+      - ${PORT}:${PORT}
