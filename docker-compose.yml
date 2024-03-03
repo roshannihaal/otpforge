@@ -9,8 +9,11 @@ services:
     restart: always
     environment:
       - PORT=${PORT}
+      - REDIS_HOST=${REDIS_HOST}
     ports:
       - ${PORT}:${PORT}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
   redis:
     container_name: otpforge-redis
     restart: always
