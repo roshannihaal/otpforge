@@ -5,6 +5,7 @@ import { config } from '../../config'
 import { addOtp, maskEmail } from '../../utils'
 
 const otpLength = config.OTP_LENGTH
+const otpValidityInMinutes = config.OTP_VALIDITY / 60
 
 export const generateEmailOtp = async (
   req: Request<unknown, unknown, GenerateEmailOtpDTO>,
@@ -25,10 +26,12 @@ export const generateEmailOtp = async (
 
     await addOtp(transactionId, otp)
 
+    const message = `OTP sent to ${maskedEmail}. OTP is valid for ${otpValidityInMinutes} minutes.`
+
     const resStatusCode = 200
     res.status(resStatusCode).send({
       statusCode: resStatusCode,
-      message: `OTP Sent to ${maskedEmail}`,
+      message,
       otp,
       transactionId,
     })
