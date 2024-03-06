@@ -1,2 +1,2 @@
-export { connectToRedis } from './RedisClient'
+export { connectToRedis, addOtp } from './RedisClient'
 export { maskEmail } from './Mask'

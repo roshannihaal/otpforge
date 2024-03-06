@@ -17,6 +17,12 @@ export const ConfigSchema = z.object({
   INCLUDE_NUMBERS: z
     .enum(['true', 'false'])
     .transform((value) => value === 'true'),
+  OTP_VALIDITY: z
+    .string()
+    .transform((value) => parseInt(value, 10))
+    .refine((value) => value > 0, {
+      message: 'OTP length must be greater than 0',
+    }),
 })
 
 export type ConfigSchema = z.input<typeof ConfigSchema>

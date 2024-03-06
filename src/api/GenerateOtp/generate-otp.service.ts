@@ -1,4 +1,4 @@
-import { randomBytes, createHash, randomInt } from 'crypto'
+import { randomBytes, createHash, randomUUID } from 'crypto'
 import { config } from '../../config'
 
 const otpLength = config.OTP_LENGTH
@@ -22,4 +22,9 @@ export const generateOtp = (): string => {
     otp = numericString.substring(0, otpLength).toUpperCase()
   }
   return otp
+}
+
+export const generateTransactionId = (): string => {
+  const transactionId = randomUUID()
+  return transactionId
 }
