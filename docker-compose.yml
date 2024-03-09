@@ -14,6 +14,7 @@ services:
       - INCLUDE_ALPHABETS=${INCLUDE_ALPHABETS}
       - INCLUDE_NUMBERS=${INCLUDE_NUMBERS}
       - OTP_VALIDITY=${OTP_VALIDITY}
+      - MAX_ATTEMPTS=${MAX_ATTEMPTS}
     ports:
       - ${PORT}:${PORT}
     extra_hosts:

@@ -32,8 +32,10 @@ export const generateEmailOtp = async (
     res.status(resStatusCode).send({
       statusCode: resStatusCode,
       message,
-      otp,
-      transactionId,
+      data: {
+        otp,
+        transactionId,
+      },
     })
   } catch (error) {
     next(error)

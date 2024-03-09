@@ -24,6 +24,12 @@ export const ConfigSchema = z
       .refine((value) => value >= 300 && value <= 1800, {
         message: 'OTP validity must be between 5 and 30 minutes',
       }),
+    MAX_ATTEMPTS: z
+      .string()
+      .transform((value) => parseInt(value, 10))
+      .refine((value) => value >= 3 && value <= 5, {
+        message: 'Maximum attempts must be between 3 and 5',
+      }),
   })
   .refine(({ INCLUDE_ALPHABETS, INCLUDE_NUMBERS }) => {
     if (INCLUDE_ALPHABETS === true || INCLUDE_NUMBERS === true) {
