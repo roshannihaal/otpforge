@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Email Template</title>
+  </head>
+  <body style="text-align: center">
+    <div
+      style="
+        padding: 0.5rem;
+        width: 90%;
+        border: solid 1px black;
+        margin: 0 auto;
+      "
+    >
+      <div style="font-size: 2rem; font-weight: bold">{{COMPANY_NAME}}</div>
+      <div style="margin-top: 1rem">Hello,</div>
+      <div>Please use the verification code below. {{MESSAGE}}.</div>
+      <div style="font-weight: bold; letter-spacing: 0.5rem; margin-top: 1rem">
+        {{OTP}}
+      </div>
+      <div style="margin-top: 1rem">
+        If you didn't request this, you can ignore this email.
+      </div>
+      <div style="margin-top: 1rem">Thanks,</div>
+      <div>{{TEAM_NAME}}</div>
+    </div>
+  </body>
+</html>

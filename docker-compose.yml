@@ -15,6 +15,13 @@ services:
       - INCLUDE_NUMBERS=${INCLUDE_NUMBERS}
       - OTP_VALIDITY=${OTP_VALIDITY}
       - MAX_ATTEMPTS=${MAX_ATTEMPTS}
+      - COMPANY_NAME=${COMPANY_NAME}
+      - TEAM_NAME=${TEAM_NAME}
+      - EMAIL_HOST=${EMAIL_HOST} 
+      - EMAIL_PORT=${EMAIL_PORT} 
+      - EMAIL_SECURE=${EMAIL_SECURE} 
+      - FROM_EMAIL=${FROM_EMAIL} 
+      - EMAIL_PASS=${EMAIL_PASS} 
     ports:
       - ${PORT}:${PORT}
     extra_hosts:

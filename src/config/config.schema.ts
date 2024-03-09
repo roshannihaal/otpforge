@@ -30,6 +30,18 @@ export const ConfigSchema = z
       .refine((value) => value >= 3 && value <= 5, {
         message: 'Maximum attempts must be between 3 and 5',
       }),
+    COMPANY_NAME: z.string().trim(),
+    TEAM_NAME: z.string().trim(),
+    EMAIL_HOST: z.string().trim(),
+    EMAIL_PORT: z
+      .string()
+      .trim()
+      .transform((value) => parseInt(value, 10)),
+    EMAIL_SECURE: z
+      .enum(['true', 'false'])
+      .transform((value) => value === 'true'),
+    FROM_EMAIL: z.string().trim(),
+    EMAIL_PASS: z.string().trim(),
   })
   .refine(({ INCLUDE_ALPHABETS, INCLUDE_NUMBERS }) => {
     if (INCLUDE_ALPHABETS === true || INCLUDE_NUMBERS === true) {

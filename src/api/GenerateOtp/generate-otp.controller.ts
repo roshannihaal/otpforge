@@ -2,7 +2,13 @@ import { Request, Response, NextFunction } from 'express'
 import { GenerateEmailOtpDTO } from './generate-otp.dto'
 import { generateOtp, generateTransactionId } from './generate-otp.service'
 import { config } from '../../config'
-import { addOtp, maskEmail } from '../../utils'
+import {
+  addOtp,
+  maskEmail,
+  readHTML,
+  substituteTemplate,
+  sendEmail,
+} from '../../utils'
 
 const otpLength = config.OTP_LENGTH
 const otpValidityInMinutes = config.OTP_VALIDITY / 60
@@ -25,6 +31,12 @@ export const generateEmailOtp = async (
     const transactionId = generateTransactionId()
 
     await addOtp(transactionId, otp)
+
+    const template = readHTML()
+
+    const substitutedTemplate = substituteTemplate(template, otp)
+
+    await sendEmail(email, substitutedTemplate)
 
     const message = `OTP sent to ${maskedEmail}. OTP is valid for ${otpValidityInMinutes} minutes.`
 
