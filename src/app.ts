@@ -3,6 +3,8 @@ import cors from 'cors'
 import helmet from 'helmet'
 import hpp from 'hpp'
 import { connectToRedis } from './utils'
+import { errorHandler, notFound } from './middlewares'
+import { apiRouter } from './api'
 const app = express()
 
 app.use(express.json({ limit: '1mb' }))
@@ -26,5 +28,9 @@ app.get('/', (req, res) => {
     .status(resStatusCode)
     .send({ statusCode: resStatusCode, message: 'Hello World!' })
 })
+
+app.use('/api', apiRouter)
+app.use(notFound)
+app.use(errorHandler)
 
 export default app
