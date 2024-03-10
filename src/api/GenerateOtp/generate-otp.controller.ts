@@ -30,7 +30,7 @@ export const generateEmailOtp = async (
 
     const transactionId = generateTransactionId()
 
-    await addOtp(transactionId, otp)
+    const remainingAttempts = await addOtp(transactionId, otp)
 
     const template = readHTML()
 
@@ -45,8 +45,8 @@ export const generateEmailOtp = async (
       statusCode: resStatusCode,
       message,
       data: {
-        otp,
         transactionId,
+        remainingAttempts,
       },
     })
   } catch (error) {
