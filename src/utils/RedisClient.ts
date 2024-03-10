@@ -85,6 +85,7 @@ export const validateOtp = async (
         message: 'Invalid OTP',
         data: {
           remainingAttempts,
+          transactionId,
         },
       }
       return response
